@@ -1,13 +1,13 @@
-document.getElementById("botonSuma").addEventListener("click",()=>{operar("suma")})
-document.getElementById("botonResta").addEventListener("click",()=>{operar("resta")})
-document.getElementById("botonMultiplicacion").addEventListener("click",()=>{operar("multiplicacion")})
-document.getElementById("botonDivision").addEventListener("click",()=>{operar("division")})
-
+document.getElementById("sumaButton").addEventListener("click",()=>{operar("suma")})
+document.getElementById("restaButton").addEventListener("click",()=>{operar("resta")})
+document.getElementById("multiplicacionButton").addEventListener("click",()=>{operar("multiplicacion")})
+document.getElementById("divisionButton").addEventListener("click",()=>{operar("division")})
+document.getElementById("borrarButton").addEventListener("click",borrarTodo)
 
 
 function operar(tipoOp){
-	var op1 = parseFloat(document.getElementById("op1Txt").value)
-	var op2 = parseFloat(document.getElementById("op2Txt").value)
+	var op1 = parseFloat(document.getElementById("op1Input").value)
+	var op2 = parseFloat(document.getElementById("op2Input").value)
 	var resultado
 	
 	if(tipoOp === "suma") resultado = op1+op2
@@ -15,5 +15,11 @@ function operar(tipoOp){
 	else if (tipoOp === "multiplicacion") resultado = op1*op2
 	else if (tipoOp === "division") resultado = op1/op2
 	
-	document.getElementById("resTxt").value = resultado.toString()
+	document.getElementById("resInput").value = resultado.toString()
+}
+
+function borrarTodo(){
+	document.getElementById("op1Input").value = ""
+	document.getElementById("op2Input").value = ""
+	document.getElementById("resInput").value = ""
 }

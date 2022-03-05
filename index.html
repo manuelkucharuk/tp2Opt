@@ -1,34 +1,39 @@
 <html>
 	<head>
-		<link rel="stylesheet" href="./style.css">
 		<script src="./calc.js" defer></script>
+		<link rel="stylesheet" href="./style.css">
+		<link rel="icon" type="image/x-icon" href="./assets/calculadora_icon.png">
+		<title>Calculadora</title>
+    	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
 	</head>
 	<body>
 		<div class="calculadora">
 			<div class="bordeCalc"></div>
-			<div class="titulo">
-				Calculadora
+			<div class="titulo"></div>
+			<div class="op1Div">
+				<input class="input" type="text" id="op1Input">
 			</div>
-			<div class="operando1" id="op1">
-				<input type="text" style="width: 90%; height: 90%" id="op1Txt">
+			<div class="op2Div">
+				<input class="input" type="text" id="op2Input">
 			</div>
-			<div class="operando2" id="op2">
-				<input type="text" style="width: 90%; height: 90%" id="op2Txt">
+			<div class="sumaDiv">
+				<input class="button" type="button" value="&#x2B;" id="sumaButton">
 			</div>
-			<div class="suma">
-				<input type="button" style="width: 90%; height: 90%" value="+" id="botonSuma">
+			<div class="restaDiv">
+				<input class="button" type="button" value="&#x2212;" id="restaButton">
 			</div>
-			<div class="resta">
-				<input type="button" style="width: 90%; height: 90%" value="-" id="botonResta">
+			<div class="multiplicacionDiv">
+				<input class="button" type="button" value="&#xD7;" id="multiplicacionButton">
 			</div>
-			<div class="multiplicacion">
-				<input type="button" style="width: 90%; height: 90%" value="x" id="botonMultiplicacion">
+			<div class="divisionDiv">
+				<input class="button" type="button" value="&#xF7;" id="divisionButton">
 			</div>
-			<div class="division">
-				<input type="button" style="width: 90%; height: 90%" value="/" id="botonDivision">
+			<div class="resDiv">
+				<input class="input" type="text" id="resInput">
 			</div>
-			<div class="resultado">
-				<input type="text" style="width: 90%; height: 90%" id="resTxt">
+			<div class="borrarDiv">
+				<input class="button" type="button" value="CE" id="borrarButton">
 			</div>
 		</div>
 	</body
