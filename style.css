@@ -16,8 +16,8 @@ input[type=button]{
 	font-weight: bolder;
 }
 
-input[type=number],
-input[type=text]{
+input[type=text],
+input[type=number]{
 	background-color: #bccd95;
 	text-align: right;
 	font-family: seg7, serif;

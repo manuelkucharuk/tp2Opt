@@ -10,7 +10,7 @@ function operar(tipoOp){
 	let op2 = parseFloat(document.getElementById("op2Input").value)
 	let resultado;
 
-	if(isNaN(op1) || isNaN(op2)){
+	if(Number.isNaN(op1) || Number.isNaN(op2)){
 		document.getElementById("resInput").value = "Err"
 		return
 	}
@@ -20,11 +20,16 @@ function operar(tipoOp){
 	else if (tipoOp === "multiplicacion") resultado = op1*op2
 	else if (tipoOp === "division") resultado = op1/op2
 	
-	document.getElementById("resInput").value = resultado.toString()
+	document.getElementById("resInput").value = redondear(resultado,12)
+
 }
 
 function borrarTodo(){
 	document.getElementById("op1Input").value = ""
 	document.getElementById("op2Input").value = ""
 	document.getElementById("resInput").value = ""
+}
+
+function redondear(num,prec=10){
+	return Math.round( ( num + Number.EPSILON ) * 10**prec) / 10**prec
 }
