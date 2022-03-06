@@ -6,10 +6,10 @@ document.getElementById("borrarButton").addEventListener("click",borrarTodo)
 
 
 function operar(tipoOp){
-	var op1 = parseFloat(document.getElementById("op1Input").value)
-	var op2 = parseFloat(document.getElementById("op2Input").value)
-	var resultado
-	
+	let op1 = parseFloat(document.getElementById("op1Input").value);
+	let op2 = parseFloat(document.getElementById("op2Input").value);
+	let resultado;
+
 	if(tipoOp === "suma") resultado = op1+op2
 	else if (tipoOp === "resta") resultado = op1-op2
 	else if (tipoOp === "multiplicacion") resultado = op1*op2

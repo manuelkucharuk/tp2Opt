@@ -19,7 +19,7 @@ input[type=button]{
 input[type=text]{
 	background-color: #bccd95;  
 	text-align: right;
-	font-family: seg7;
+	font-family: seg7, serif;
 }
 
 
@@ -70,7 +70,7 @@ input[type=text]{
 }
 
 #sumaButton{
-  	content: "\f067";
+	justify-self: flex-start;
 }
 
 
@@ -82,7 +82,6 @@ input[type=text]{
 
 #restaButton{
 	justify-self: center;
-  	content: "\f610";
 }
 
 .multiplicacionDiv{
