@@ -1,35 +1,59 @@
-document.getElementById("sumaButton").addEventListener("click",()=>{operar("suma")})
-document.getElementById("restaButton").addEventListener("click",()=>{operar("resta")})
-document.getElementById("multiplicacionButton").addEventListener("click",()=>{operar("multiplicacion")})
-document.getElementById("divisionButton").addEventListener("click",()=>{operar("division")})
-document.getElementById("borrarButton").addEventListener("click",borrarTodo)
+const byId = (idStr)=>{ return document.getElementById(idStr) }
+const click = (elem,func)=>{ elem.addEventListener("click",func) }
 
-
-function operar(tipoOp){
-	let op1 = parseFloat(document.getElementById("op1Input").value)
-	let op2 = parseFloat(document.getElementById("op2Input").value)
-	let resultado;
-
-	if(Number.isNaN(op1) || Number.isNaN(op2)){
-		document.getElementById("resInput").value = "Err"
-		return
+class Calculadora{
+	constructor() {
+		this.initElementos()
+		this.initEventos()
 	}
 
-	if(tipoOp === "suma") resultado = op1+op2
-	else if (tipoOp === "resta") resultado = op1-op2
-	else if (tipoOp === "multiplicacion") resultado = op1*op2
-	else if (tipoOp === "division") resultado = op1/op2
-	
-	document.getElementById("resInput").value = redondear(resultado,12)
+	static redondear(num,prec=10) {
+		return Math.round((num + Number.EPSILON) * 10 ** prec) / 10 ** prec
+	}
 
+	initElementos(){
+		this.op1 = 			byId("op1Input")
+		this.op2 = 			byId("op2Input")
+		this.res = 			byId("resInput")
+		this.botonSuma = 	byId("sumaButton")
+		this.botonResta = 	byId("restaButton")
+		this.botonMult = 	byId("multiplicacionButton")
+		this.botonDivi = 	byId("divisionButton")
+		this.botonBorrar =	byId("borrarButton")
+	}
+
+	initEventos(){
+		click(this.botonSuma,  ()=>{this.operar("suma")})
+		click(this.botonResta, ()=>{this.operar("resta")})
+		click(this.botonMult,  ()=>{this.operar("mult")})
+		click(this.botonDivi,  ()=>{this.operar("divi")})
+		click(this.botonBorrar,()=>{this.borrarTodo()})
+	}
+
+	operar(tipoOp){
+		let op1 = parseFloat(this.op1.value)
+		let op2 = parseFloat(this.op2.value)
+		let res
+
+		if(Number.isNaN(op1) || Number.isNaN(op2)){
+			this.res.value = "Err"
+			return
+		}
+
+		if(tipoOp === "suma") 			res = op1+op2
+		else if (tipoOp === "resta") 	res = op1-op2
+		else if (tipoOp === "mult") 	res = op1*op2
+		else if (tipoOp === "divi") 	res = op1/op2
+
+		this.res.value = Calculadora.redondear(res,12)
+
+	}
+
+	borrarTodo(){
+		this.op1.value = ""
+		this.op2.value = ""
+		this.res.value = ""
+	}
 }
 
-function borrarTodo(){
-	document.getElementById("op1Input").value = ""
-	document.getElementById("op2Input").value = ""
-	document.getElementById("resInput").value = ""
-}
-
-function redondear(num,prec=10){
-	return Math.round( ( num + Number.EPSILON ) * 10**prec) / 10**prec
-}
+const c = new Calculadora()
