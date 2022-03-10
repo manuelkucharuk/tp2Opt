@@ -1,14 +1,11 @@
-const byId = (idStr)=>{ return document.getElementById(idStr) }
-const click = (elem,func)=>{ elem.addEventListener("click",func) }
+const byId = (idStr)=> document.getElementById(idStr)
+const click = (elem,func)=> elem.addEventListener("click",func)
+const redondear = (num,prec=10)=> Math.round((num + Number.EPSILON) * 10 ** prec) / 10 ** prec
 
 class Calculadora{
 	constructor() {
 		this.initElementos()
 		this.initEventos()
-	}
-
-	static redondear(num,prec=10) {
-		return Math.round((num + Number.EPSILON) * 10 ** prec) / 10 ** prec
 	}
 
 	initElementos(){
@@ -23,11 +20,11 @@ class Calculadora{
 	}
 
 	initEventos(){
-		click(this.botonSuma,  ()=>{this.operar("suma")})
-		click(this.botonResta, ()=>{this.operar("resta")})
-		click(this.botonMult,  ()=>{this.operar("mult")})
-		click(this.botonDivi,  ()=>{this.operar("divi")})
-		click(this.botonBorrar,()=>{this.borrarTodo()})
+		click(this.botonSuma,  ()=>this.operar("suma"))
+		click(this.botonResta, ()=>this.operar("resta"))
+		click(this.botonMult,  ()=>this.operar("mult"))
+		click(this.botonDivi,  ()=>this.operar("divi"))
+		click(this.botonBorrar,()=>this.borrarTodo())
 	}
 
 	operar(tipoOp){
@@ -35,7 +32,7 @@ class Calculadora{
 		let op2 = parseFloat(this.op2.value)
 		let res
 
-		if(Number.isNaN(op1) || Number.isNaN(op2)){
+		if(isNaN(op1) || isNaN(op2)){
 			this.res.value = "Err"
 			return
 		}
@@ -45,7 +42,7 @@ class Calculadora{
 		else if (tipoOp === "mult") 	res = op1*op2
 		else if (tipoOp === "divi") 	res = op1/op2
 
-		this.res.value = Calculadora.redondear(res,12)
+		this.res.value = redondear(res,12)
 
 	}
 

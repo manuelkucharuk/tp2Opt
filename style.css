@@ -12,6 +12,7 @@ input{
 input[type=button]{
 	background-color: #f38200;
 	border: none;
+	padding: 0px;
 	font-size: x-large;
 	font-weight: bolder;
 }
